@@ -16,7 +16,7 @@ var Enemy = function(x,y,v) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -29,7 +29,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 505) {
         this.x= 0;
     }
-checkCollision(this);
+ checkCollision(this);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -45,21 +45,18 @@ var Player = function(x,y,v) {
     this.y = y;
     this.v = v;
     this.score = 0;
-
     this.sprite = 'images/char-boy.png';
-
 };
 
 Player.prototype.update = function() {
     if(
-        player.y - 10  <= 0) {
+        this.y - 10  <= 0) {
 
 
     console.log('You Won!');
     player.x = 200;
     player.y = 415;
     this.score += 5;
-
     }
 
     // Display Score
@@ -76,12 +73,10 @@ var checkCollision = function (bugs) {
     && player.y < bugs.y + 50
     && player.y + 70 > bugs.y) {
 
-    this.score -= 5;
+    player.score -= 5;
     console.log('Game Over!');
     player.x = 200;
     player.y = 415;
-
-
     }
 };
 
@@ -90,9 +85,6 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite),this.x, this.y);
     //ctx.fillRect(200, 200, 100, 55); //squares are 100 wide and 80 high; 200 x and 465 y
    // ctx.clearRect(200,475,75, 75)
-
-
-
 
 };
 
@@ -105,8 +97,7 @@ for  (var i = 0; i < 7; i++) {
   var enemy = new Enemy(0, Math.random() * 180+ 70);
 
   allEnemies.push(enemy);
-
-};
+}
 
 Player.prototype.handleInput = function(direction) {
     if(direction == 'left' && this.x  >= 100)
@@ -117,7 +108,7 @@ Player.prototype.handleInput = function(direction) {
         this.x += 100;
     if(direction == 'down' && this.y + 85 < 485)
         this.y += 85;
-}
+};
 
 
 // This listens for key presses and sends the keys to your
@@ -128,7 +119,7 @@ document.addEventListener('keyup', function(e) {
         38: 'up',
         39: 'right',
         40: 'down'
-    };
+};
 
     player.handleInput(allowedKeys[e.keyCode]);
 });

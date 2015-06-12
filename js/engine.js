@@ -181,4 +181,4 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-})(this);
+})(this)
