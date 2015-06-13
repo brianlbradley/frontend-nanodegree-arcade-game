@@ -29,7 +29,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 505) {
         this.x= 0;
     }
- checkCollision(this);
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -52,10 +52,9 @@ Player.prototype.update = function() {
     if(
         this.y - 10  <= 0) {
 
-
     console.log('You Won!');
-    player.x = 200;
-    player.y = 415;
+    this.x = 200;
+    this.y = 415;
     this.score += 5;
     }
 
@@ -66,8 +65,8 @@ Player.prototype.update = function() {
     ctx.fillText("Score: " + this.score, 0, 35);
 };
 
-var checkCollision = function (bugs) {
-    if(
+Enemy.prototype.update.checkCollision = function (bugs) {
+    if (
     player.x <  bugs.x + 90
     && player.x + 75 > bugs.x
     && player.y < bugs.y + 50
@@ -78,6 +77,9 @@ var checkCollision = function (bugs) {
     player.x = 200;
     player.y = 415;
     }
+
+this.checkCollision(this);
+
 };
 
 
@@ -119,7 +121,7 @@ document.addEventListener('keyup', function(e) {
         38: 'up',
         39: 'right',
         40: 'down'
-};
+    };
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
