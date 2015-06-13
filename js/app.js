@@ -29,7 +29,6 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 505) {
         this.x= 0;
     }
-
 };
 
 // Draw the enemy on the screen, required method for game
@@ -49,13 +48,12 @@ var Player = function(x,y,v) {
 };
 
 Player.prototype.update = function() {
-    if(
-        this.y - 10  <= 0) {
+  if (this.y - 10  <= 0) {
 
-    console.log('You Won!');
-    this.x = 200;
-    this.y = 415;
-    this.score += 5;
+   //console.log('You Won!');
+     this.x = 200;
+     this.y = 415;
+     this.score += 5;
     }
 
     // Display Score
@@ -65,22 +63,23 @@ Player.prototype.update = function() {
     ctx.fillText("Score: " + this.score, 0, 35);
 };
 
-Enemy.prototype.update.checkCollision = function (bugs) {
-    if (
-    player.x <  bugs.x + 90
-    && player.x + 75 > bugs.x
-    && player.y < bugs.y + 50
-    && player.y + 70 > bugs.y) {
+
+Enemy.prototype.checkCollision = function() {
+    if (player.x <  this.x + 90
+    && player.x + 75 > this.x
+    && player.y < this.y + 50
+    && player.y + 70 > this.y) {
 
     player.score -= 5;
-    console.log('Game Over!');
+    //console.log('Game Over!');
     player.x = 200;
     player.y = 415;
+
     }
 
-this.checkCollision(this);
-
+    checkCollision(this)
 };
+
 
 
 Player.prototype.render = function() {
