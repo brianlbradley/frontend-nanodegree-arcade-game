@@ -54,7 +54,7 @@ Player.prototype.resetPosition = function() {
     this.x = 200;
     this.y = 415;
 };
-
+//Check to see if player reaches water; reset and score.
 Player.prototype.update = function() {
     if (
      this.y - 10  <= 0) {
